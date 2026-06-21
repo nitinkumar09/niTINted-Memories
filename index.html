@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nitin Musi — Stream Music</title>
+  <meta name="description"
+    content="Nitin Musi — A premium music streaming app with all languages, movie songs, and full playback." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" fill="url(#logoGrad)" />
+          <path d="M9 8l7 4-7 4V8z" fill="white" />
+          <defs>
+            <linearGradient id="logoGrad" x1="0" y1="0" x2="24" y2="24">
+              <stop offset="0%" stop-color="#a855f7" />
+              <stop offset="100%" stop-color="#06b6d4" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <span class="logo-text">Nitin Musi</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <button class="nav-btn active" data-section="home" onclick="showSection('home')">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+        </svg>
+        <span>Home</span>
+      </button>
+      <button class="nav-btn" data-section="search" onclick="showSection('search')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.35-4.35" />
+        </svg>
+        <span>Search</span>
+      </button>
+      <button class="nav-btn" data-section="movies" onclick="showSection('movies')">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z" />
+        </svg>
+        <span>Movie Songs</span>
+      </button>
+      <button class="nav-btn" data-section="actor" onclick="showSection('actor')">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+        </svg>
+        <span>Actor Songs</span>
+      </button>
+      <button class="nav-btn" data-section="library" onclick="showSection('library')">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z" />
+        </svg>
+        <span>Library</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-section-title">Genres</div>
+    <div class="genre-pills">
+      <button class="genre-pill active" onclick="searchByGenre('Telugu hits')">Telugu</button>
+      <button class="genre-pill" onclick="searchByGenre('Hindi bollywood hits')">Hindi</button>
+      <button class="genre-pill" onclick="searchByGenre('Tamil kollywood hits')">Tamil</button>
+      <button class="genre-pill" onclick="searchByGenre('Malayalam songs')">Malayalam</button>
+      <button class="genre-pill" onclick="searchByGenre('Kannada songs')">Kannada</button>
+      <button class="genre-pill" onclick="searchByGenre('English pop hits')">English</button>
+      <button class="genre-pill" onclick="searchByGenre('Punjabi songs')">Punjabi</button>
+      <button class="genre-pill" onclick="searchByGenre('devotional songs')">Devotional</button>
+    </div>
+
+    <div class="sidebar-section-title" style="margin-top:1rem">Actors / Singers</div>
+    <div class="genre-pills">
+      <button class="genre-pill" onclick="searchActor('Allu Arjun')">Allu Arjun</button>
+      <button class="genre-pill" onclick="searchActor('Jr NTR')">Jr NTR</button>
+      <button class="genre-pill" onclick="searchActor('Prabhas')">Prabhas</button>
+      <button class="genre-pill" onclick="searchActor('Ram Charan')">Ram Charan</button>
+      <button class="genre-pill" onclick="searchActor('Vijay')">Vijay</button>
+      <button class="genre-pill" onclick="searchActor('AR Rahman')">AR Rahman</button>
+      <button class="genre-pill" onclick="searchActor('Sid Sriram')">Sid Sriram</button>
+      <button class="genre-pill" onclick="searchActor('Anirudh')">Anirudh</button>
+    </div>
+
+    <div class="sidebar-section-title" style="margin-top:1rem">Era</div>
+    <div class="genre-pills">
+      <button class="genre-pill" onclick="searchByGenre('classic 80s 90s songs')">80s–90s</button>
+      <button class="genre-pill" onclick="searchByGenre('2000s hits songs')">2000s</button>
+      <button class="genre-pill" onclick="searchByGenre('2010s popular songs')">2010s</button>
+      <button class="genre-pill active" onclick="searchByGenre('2024 new songs')">2024 New</button>
+    </div>
+
+    <div class="sidebar-section-title"
+      style="margin-top:1rem;display:flex;align-items:center;justify-content:space-between">
+      <span>My Playlists</span>
+      <button class="spl-add-btn" onclick="openPlaylistModal()" title="New Playlist">+</button>
+    </div>
+    <div class="sidebar-playlists" id="sidebarPlaylistsList">
+      <div class="spl-empty">No playlists yet</div>
+    </div>
+
+    <div class="sidebar-bottom">
+      <div class="liked-songs" onclick="showLiked()">
+        <div class="liked-icon">♥</div>
+        <div>
+          <div class="liked-title">Liked Songs</div>
+          <div class="liked-count" id="likedCount">0 songs</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main-content" id="mainContent">
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-btn" onclick="toggleSidebar()" id="menuBtn">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </button>
+        <div class="global-search-wrap">
+          <svg class="search-icon-top" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>
+          <input type="text" id="globalSearch" class="global-search-input"
+            placeholder="Search songs, movies, actors, heroes…" onkeydown="if(event.key==='Enter') doSearch()"
+            oninput="debouncedSearch()" autocomplete="off" />
+          <button class="search-clear-btn" id="searchClearBtn" onclick="clearSearch()" style="display:none">✕</button>
+          <div class="search-suggestions" id="searchSuggestionsBox" style="display:none"></div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <button class="theme-btn" onclick="cycleTheme()" title="Change theme">🎨</button>
+        <div class="user-avatar">NK</div>
+      </div>
+    </header>
+
+    <!-- HOME SECTION -->
+    <section class="section active" id="section-home">
+      <div class="section-inner">
+        <div class="hero-banner" id="heroBanner">
+          <div class="hero-content">
+            <div class="hero-tag">🎵 Now Trending</div>
+            <h1 class="hero-title">Stream Every Song,<br />Every Language</h1>
+            <p class="hero-sub">Telugu · Hindi · Tamil · English & More — Old Classics to 2024 Hits</p>
+            <button class="hero-btn" onclick="searchByGenre('trending 2024 songs')">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              Play Trending
+            </button>
+          </div>
+          <div class="hero-visual">
+            <div class="vinyl-disc" id="vinylDisc">
+              <div class="vinyl-center"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick picks grid: populated by JS with real posters -->
+        <div class="quick-picks" id="quickPicks">
+          <!-- Loaded dynamically by loadQuickPicks() -->
+          <div class="qp-skeleton"></div>
+          <div class="qp-skeleton"></div>
+          <div class="qp-skeleton"></div>
+          <div class="qp-skeleton"></div>
+          <div class="qp-skeleton"></div>
+          <div class="qp-skeleton"></div>
+          <div class="qp-skeleton"></div>
+          <div class="qp-skeleton"></div>
+        </div>
+
+        <div class="featured-row">
+          <div class="row-header">
+            <h2>🔥 Trending Now</h2>
+            <span class="see-all" onclick="searchByGenre('trending 2024 songs')">See all →</span>
+          </div>
+          <div class="cards-scroll" id="featuredCards">
+            <div class="card-skeleton"></div>
+            <div class="card-skeleton"></div>
+            <div class="card-skeleton"></div>
+            <div class="card-skeleton"></div>
+            <div class="card-skeleton"></div>
+          </div>
+        </div>
+
+        <div class="featured-row">
+          <div class="row-header">
+            <h2>💜 Made For You</h2>
+            <span class="see-all" onclick="loadMadeForYou()">Refresh →</span>
+          </div>
+          <div class="cards-scroll" id="madeForYouCards">
+            <div class="card-skeleton"></div>
+            <div class="card-skeleton"></div>
+            <div class="card-skeleton"></div>
+            <div class="card-skeleton"></div>
+          </div>
+        </div>
+
+        <div class="featured-row">
+          <div class="row-header">
+            <h2>🎬 Top Movie Soundtracks</h2>
+            <span class="see-all" onclick="showSection('movies')">See all →</span>
+          </div>
+          <div class="cards-scroll" id="movieCards">
+            <div class="card-skeleton"></div>
+            <div class="card-skeleton"></div>
+            <div class="card-skeleton"></div>
+            <div class="card-skeleton"></div>
+          </div>
+        </div>
+
+        <div class="featured-row">
+          <div class="row-header">
+            <h2>🕰️ Old is Gold</h2>
+            <span class="see-all" onclick="searchByGenre('classic 80s 90s Telugu Hindi songs')">See all →</span>
+          </div>
+          <div class="cards-scroll" id="classicCards">
+            <div class="card-skeleton"></div>
+            <div class="card-skeleton"></div>
+            <div class="card-skeleton"></div>
+            <div class="card-skeleton"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEARCH SECTION -->
+    <section class="section" id="section-search">
+      <div class="section-inner">
+        <h2 class="section-title">Search Results</h2>
+        <div class="search-filters">
+          <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
+          <button class="filter-btn" onclick="setFilter('song',this)">Songs</button>
+          <button class="filter-btn" onclick="setFilter('album',this)">Albums</button>
+          <button class="filter-btn" onclick="setFilter('movie',this)">Movies</button>
+        </div>
+        <div class="results-grid" id="searchResults">
+          <div class="empty-state">
+            <div class="empty-icon">🔍</div>
+            <p>Search for songs, movies, or artists above</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOVIES SECTION -->
+    <section class="section" id="section-movies">
+      <div class="section-inner">
+        <h2 class="section-title">Movie Soundtracks</h2>
+        <div class="movie-search-wrap">
+          <input type="text" id="movieSearchInput" class="movie-search-input"
+            placeholder="Search a movie name (e.g. RRR, Bahubali, Kaithi)…"
+            onkeydown="if(event.key==='Enter') searchMovie()" />
+          <button class="movie-search-btn" onclick="searchMovie()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.35-4.35" />
+            </svg>
+            Search
+          </button>
+        </div>
+        <div id="movieResults" class="movie-results">
+          <div class="movie-suggestions">
+            <p class="suggestions-title">Popular Movie Albums</p>
+            <div class="suggestion-chips">
+              <span class="chip" onclick="loadMovieSongs('RRR')">RRR</span>
+              <span class="chip" onclick="loadMovieSongs('Pushpa 2')">Pushpa 2</span>
+              <span class="chip" onclick="loadMovieSongs('Bahubali')">Bahubali</span>
+              <span class="chip" onclick="loadMovieSongs('Kalki 2898 AD')">Kalki 2898 AD</span>
+              <span class="chip" onclick="loadMovieSongs('Devara')">Devara</span>
+              <span class="chip" onclick="loadMovieSongs('Leo')">Leo</span>
+              <span class="chip" onclick="loadMovieSongs('Jawan')">Jawan</span>
+              <span class="chip" onclick="loadMovieSongs('Animal 2023')">Animal</span>
+              <span class="chip" onclick="loadMovieSongs('Vikram')">Vikram</span>
+              <span class="chip" onclick="loadMovieSongs('KGF Chapter 2')">KGF 2</span>
+              <span class="chip" onclick="loadMovieSongs('Adipurush')">Adipurush</span>
+              <span class="chip" onclick="loadMovieSongs('Pathaan')">Pathaan</span>
+              <span class="chip" onclick="loadMovieSongs('Ponniyin Selvan')">Ponniyin Selvan</span>
+              <span class="chip" onclick="loadMovieSongs('Saaho')">Saaho</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACTOR / HERO SEARCH SECTION -->
+    <section class="section" id="section-actor">
+      <div class="section-inner">
+        <h2 class="section-title">🎤 Actor / Singer Songs</h2>
+        <div class="movie-search-wrap">
+          <input type="text" id="actorSearchInput" class="movie-search-input"
+            placeholder="Enter actor or singer name (e.g. Allu Arjun, NTR, Prabhas, AR Rahman)…"
+            onkeydown="if(event.key==='Enter') searchActor(this.value.trim())" />
+          <button class="movie-search-btn"
+            onclick="searchActor(document.getElementById('actorSearchInput').value.trim())">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.35-4.35" />
+            </svg>
+            Search
+          </button>
+        </div>
+        <div class="movie-suggestions">
+          <p class="suggestions-title">Popular Actors &amp; Singers</p>
+          <div class="suggestion-chips">
+            <span class="chip" onclick="searchActor('Allu Arjun')">Allu Arjun</span>
+            <span class="chip" onclick="searchActor('Jr NTR')">Jr NTR</span>
+            <span class="chip" onclick="searchActor('Prabhas')">Prabhas</span>
+            <span class="chip" onclick="searchActor('Ram Charan')">Ram Charan</span>
+            <span class="chip" onclick="searchActor('Mahesh Babu')">Mahesh Babu</span>
+            <span class="chip" onclick="searchActor('Vijay')">Vijay</span>
+            <span class="chip" onclick="searchActor('Ajith Kumar')">Ajith</span>
+            <span class="chip" onclick="searchActor('Kamal Haasan')">Kamal Haasan</span>
+            <span class="chip" onclick="searchActor('Shah Rukh Khan')">Shah Rukh Khan</span>
+            <span class="chip" onclick="searchActor('Salman Khan')">Salman Khan</span>
+            <span class="chip" onclick="searchActor('Arijit Singh')">Arijit Singh</span>
+            <span class="chip" onclick="searchActor('AR Rahman')">AR Rahman</span>
+            <span class="chip" onclick="searchActor('Sid Sriram')">Sid Sriram</span>
+            <span class="chip" onclick="searchActor('Anirudh Ravichander')">Anirudh</span>
+            <span class="chip" onclick="searchActor('S.P. Balasubrahmanyam')">SPB</span>
+            <span class="chip" onclick="searchActor('Shreya Ghoshal')">Shreya Ghoshal</span>
+          </div>
+        </div>
+        <div id="actorResultsArea"></div>
+      </div>
+    </section>
+
+    <!-- LIBRARY SECTION -->
+    <section class="section" id="section-library">
+      <div class="section-inner">
+        <h2 class="section-title">Your Library</h2>
+        <div class="library-tabs">
+          <button class="lib-tab active" onclick="showLibTab('liked',this)">❤️ Liked Songs</button>
+          <button class="lib-tab" onclick="showLibTab('recent',this)">🕒 Recently Played</button>
+        </div>
+        <div id="likedSongsList" class="song-list-container"></div>
+        <div id="recentSongsList" class="song-list-container" style="display:none"></div>
+      </div>
+    </section>
+    <!-- PLAYLIST DETAIL SECTION -->
+    <section class="section" id="section-playlist-detail">
+      <div class="section-inner">
+        <button class="back-btn" onclick="showSection('library')">← Back to Library</button>
+        <div id="playlistDetailContent"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== QUEUE SIDEBAR ===== -->
+  <aside class="queue-sidebar" id="queueSidebar">
+    <div class="queue-header">
+      <span>Up Next</span>
+      <button onclick="toggleQueue()">✕</button>
+    </div>
+    <div class="queue-list" id="queueList"></div>
+  </aside>
+
+  <!-- ===== NOW PLAYING BAR ===== -->
+  <div class="player-bar" id="playerBar">
+    <div class="player-left">
+      <div class="now-art" id="nowArt">
+        <div class="art-placeholder">♪</div>
+      </div>
+      <div class="now-info">
+        <div class="now-title" id="nowTitle">No song playing</div>
+        <div class="now-artist" id="nowArtist">Select a song to play</div>
+      </div>
+      <button class="like-btn" id="likeBtn" onclick="toggleLike()" title="Like">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+          <path
+            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="player-center">
+      <div class="player-controls">
+        <button class="ctrl-btn" onclick="toggleShuffle()" id="shuffleBtn" title="Shuffle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+            <polyline points="16 3 21 3 21 8" />
+            <line x1="4" y1="20" x2="21" y2="3" />
+            <polyline points="21 16 21 21 16 21" />
+            <line x1="15" y1="15" x2="21" y2="21" />
+          </svg>
+        </button>
+        <button class="ctrl-btn main-ctrl" onclick="previousSong()" title="Previous">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+            <path d="M6 6h2v12H6zm3.5 6 8.5 6V6z" />
+          </svg>
+        </button>
+        <button class="ctrl-btn play-btn" id="playPauseBtn" onclick="togglePlay()" title="Play/Pause">
+          <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor" width="26" height="26">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+          <svg id="pauseIcon" viewBox="0 0 24 24" fill="currentColor" width="26" height="26" style="display:none">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+          </svg>
+        </button>
+        <button class="ctrl-btn main-ctrl" onclick="nextSong()" title="Next">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+            <path d="M6 18l8.5-6L6 6v12zm2-8.14L11.03 12 8 14.14V9.86zM16 6h2v12h-2z" />
+          </svg>
+        </button>
+        <button class="ctrl-btn" onclick="toggleRepeat()" id="repeatBtn" title="Repeat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+            <polyline points="17 1 21 5 17 9" />
+            <path d="M3 11V9a4 4 0 0 1 4-4h14" />
+            <polyline points="7 23 3 19 7 15" />
+            <path d="M21 13v2a4 4 0 0 1-4 4H3" />
+          </svg>
+        </button>
+      </div>
+      <div class="progress-row">
+        <span class="time-label" id="currentTime">0:00</span>
+        <div class="progress-track" id="progressTrack" onclick="seekTo(event)">
+          <div class="progress-fill" id="progressFill"></div>
+          <div class="progress-thumb" id="progressThumb"></div>
+        </div>
+        <span class="time-label" id="totalTime">0:00</span>
+      </div>
+    </div>
+
+    <div class="player-right">
+      <button class="ctrl-btn sm" onclick="toggleQueue()" title="Queue">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+          <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" />
+        </svg>
+      </button>
+      <button class="ctrl-btn sm" id="sleepTimerBtn" onclick="toggleSleepPopup()" title="Sleep Timer">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+          <path
+            d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z" />
+        </svg>
+      </button>
+      <button class="ctrl-btn sm" onclick="toggleFullscreen()" title="Full Screen Player" id="expandBtn">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+          <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
+        </svg>
+      </button>
+      <div class="volume-wrap">
+        <button class="ctrl-btn sm" onclick="toggleMute()" id="muteBtn" title="Mute">
+          <svg id="volIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+            <path
+              d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+          </svg>
+        </button>
+        <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="80"
+          oninput="setVolume(this.value)" />
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== LOADING OVERLAY ===== -->
+  <div class="loading-overlay" id="loadingOverlay" style="display:none">
+    <div class="loading-spinner"></div>
+    <p id="loadingText">Loading songs…</p>
+  </div>
+
+  <!-- ===== TOAST ===== -->
+  <div class="toast" id="toast"></div>
+
+  <audio id="audioPlayer" preload="none"></audio>
+
+  <!-- FULL SCREEN PLAYER -->
+  <div class="fullscreen-player" id="fullscreenPlayer" style="display:none">
+    <div class="fp-bg" id="fpBg"></div>
+    <div class="fp-overlay"></div>
+    <div class="fp-content">
+      <div class="fp-topbar">
+        <button class="fp-icon-btn" onclick="toggleFullscreen()">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+            <path
+              d="M19 11H7.83l4.88-4.88c.39-.39.39-1.03 0-1.42-.39-.39-1.02-.39-1.41 0l-6.59 6.59c-.39.39-.39 1.02 0 1.41l6.59 6.59c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L7.83 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" />
+          </svg>
+        </button>
+        <span class="fp-now-label">Now Playing</span>
+        <button class="fp-icon-btn" onclick="toggleQueue()">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+            <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h10v2H4z" />
+          </svg>
+        </button>
+      </div>
+      <div class="fp-art-wrap">
+        <div class="fp-art" id="fpArt">
+          <div style="font-size:5rem;color:rgba(255,255,255,0.2)">♪</div>
+        </div>
+      </div>
+      <div class="fp-info-row">
+        <div class="fp-meta">
+          <div class="fp-title" id="fpTitle">No song playing</div>
+          <div class="fp-artist" id="fpArtist">Select a song</div>
+        </div>
+        <button class="fp-like-btn" id="fpLikeBtn" onclick="toggleLike()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26">
+            <path
+              d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+          </svg>
+        </button>
+      </div>
+      <div class="fp-progress-wrap">
+        <div class="progress-row">
+          <span class="time-label" id="fpCurrentTime">0:00</span>
+          <div class="progress-track" onclick="seekTo(event)">
+            <div class="progress-fill" id="fpProgressFill"></div>
+            <div class="progress-thumb" id="fpProgressThumb"></div>
+          </div>
+          <span class="time-label" id="fpTotalTime">0:00</span>
+        </div>
+      </div>
+      <div class="fp-controls">
+        <button class="fp-ctrl" onclick="toggleShuffle()" id="fpShuffleBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22">
+            <polyline points="16 3 21 3 21 8" />
+            <line x1="4" y1="20" x2="21" y2="3" />
+            <polyline points="21 16 21 21 16 21" />
+            <line x1="15" y1="15" x2="21" y2="21" />
+          </svg>
+        </button>
+        <button class="fp-ctrl fp-main" onclick="previousSong()">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
+            <path d="M6 6h2v12H6zm3.5 6 8.5 6V6z" />
+          </svg>
+        </button>
+        <button class="fp-play-btn" onclick="togglePlay()">
+          <svg id="fpPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="34" height="34">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+          <svg id="fpPauseIcon" viewBox="0 0 24 24" fill="currentColor" width="34" height="34" style="display:none">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+          </svg>
+        </button>
+        <button class="fp-ctrl fp-main" onclick="nextSong()">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
+            <path d="M6 18l8.5-6L6 6v12zm2-8.14L11.03 12 8 14.14V9.86zM16 6h2v12h-2z" />
+          </svg>
+        </button>
+        <button class="fp-ctrl" onclick="toggleRepeat()" id="fpRepeatBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22">
+            <polyline points="17 1 21 5 17 9" />
+            <path d="M3 11V9a4 4 0 0 1 4-4h14" />
+            <polyline points="7 23 3 19 7 15" />
+            <path d="M21 13v2a4 4 0 0 1-4 4H3" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTEXT MENU -->
+  <div class="ctx-menu" id="ctxMenu" style="display:none">
+    <div class="ctx-item" onclick="ctxPlay()"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13">
+        <path d="M8 5v14l11-7z" />
+      </svg> Play Now</div>
+    <div class="ctx-item" onclick="ctxAddToQueue()"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13">
+        <path d="M4 6h16v2H4zm0 5h16v2H4zm8 5h8v2h-8z" />
+      </svg> Add to Queue</div>
+    <div class="ctx-divider"></div>
+    <div class="ctx-item" id="ctxLikeBtn" onclick="ctxLike()">♥ Like</div>
+    <div class="ctx-item ctx-has-sub">
+      <span>📋 Add to Playlist</span><span>›</span>
+      <div class="ctx-submenu" id="ctxPlaylistSub"></div>
+    </div>
+    <div class="ctx-divider"></div>
+    <div class="ctx-item" onclick="ctxGoToArtist()">🎤 Go to Artist</div>
+  </div>
+
+  <!-- SLEEP POPUP -->
+  <div class="sleep-popup" id="sleepPopup" style="display:none">
+    <div class="sleep-title">⏰ Sleep Timer</div>
+    <div class="sleep-opts">
+      <button class="sleep-opt" onclick="setSleepTimer(0)">Off</button>
+      <button class="sleep-opt" onclick="setSleepTimer(15)">15 min</button>
+      <button class="sleep-opt" onclick="setSleepTimer(30)">30 min</button>
+      <button class="sleep-opt" onclick="setSleepTimer(45)">45 min</button>
+      <button class="sleep-opt" onclick="setSleepTimer(60)">60 min</button>
+      <button class="sleep-opt" onclick="setSleepTimer(-1)">End of Song</button>
+    </div>
+  </div>
+
+  <!-- PLAYLIST MODAL -->
+  <div class="modal-overlay" id="playlistModal" style="display:none"
+    onclick="if(event.target===this)this.style.display='none'">
+    <div class="modal-box">
+      <h3 class="modal-title">✨ New Playlist</h3>
+      <input type="text" id="playlistNameInput" class="modal-input" placeholder="Give it a name…" />
+      <div class="modal-btns">
+        <button class="modal-cancel"
+          onclick="document.getElementById('playlistModal').style.display='none'">Cancel</button>
+        <button class="modal-create" onclick="createPlaylist()">Create</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
